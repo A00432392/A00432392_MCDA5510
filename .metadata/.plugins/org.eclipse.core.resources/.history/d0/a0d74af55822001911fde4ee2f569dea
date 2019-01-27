@@ -109,7 +109,7 @@ public class DirectoryWalker {
 
 	public void Writer(String data[] ) throws IOException {
 		//System.out.println(data[0]);
-		File file = new File("C:\\Users\\Meghashyam\\Documents\\GitHub\\A00432392_MCDA5510\\Assignment1\\Output\\\\result.csv");
+		File file = new File("C:\\\\Users\\\\Meghashyam\\\\Documents\\\\GitHub\\\\MCDA5510_Assignments\\\\result.csv");
 		
 			CSVWriter writer = new CSVWriter(new FileWriter(file, true));		
 			writer.writeNext(data);  
@@ -169,7 +169,7 @@ public class DirectoryWalker {
     	final long startTime = System.currentTimeMillis();
     	DirectoryWalker fw = new DirectoryWalker();
     	
-        fw.walk("C:\\Users\\Meghashyam\\Documents\\GitHub\\A00432392_MCDA5510\\Sample Data\\" );
+        fw.walk("C:\\Users\\Meghashyam\\Documents\\GitHub\\MCDA5510_Assignments\\Sample Data" );
         final long endTime = System.currentTimeMillis();
         final long exec=endTime - startTime;
         fw.logger(exec, fw.valid_count, fw.skipped_count);
