@@ -52,7 +52,7 @@ public class DirectoryWalker {
             
         }
         
-        //System.out.println("File size: "+FileNames.size());
+        System.out.println("File size: "+FileNames.size());
         CSVparser(FileNames);
 		
     }
@@ -61,7 +61,7 @@ public class DirectoryWalker {
 	
 	public void CSVparser(List<String> Files) 
 	{   
-		//System.out.println("In CSV ");
+		System.out.println("In CSV ");
 		
 		String header[]= {"Date","First Name", "Last Name", "Street Number", "Street", "City", "Province", "Country","Postal Code", "Phone Number", "email Address"};
 	
@@ -128,7 +128,7 @@ public class DirectoryWalker {
 				        else 
 				        {   
 				        	skipped_count++;
-				        	//System.out.println("Skipped :"+skipped_count);
+				        	System.out.println("Skipped :"+skipped_count);
 				        }
 				    			    
 				        CFile = 1;
