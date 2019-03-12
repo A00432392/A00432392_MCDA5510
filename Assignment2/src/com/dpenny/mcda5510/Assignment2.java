@@ -15,7 +15,7 @@ public class Assignment2 {
 	public static Connection getInstance() {
 		if (single_instance == null) {
 			MySQLJDBCConnection dbConnection = new MySQLJDBCConnection();
-			single_instance = dbConnection.setupConnection();
+			//single_instance = dbConnection.setupConnection();
 		}
 
 		return single_instance;

@@ -1,30 +1,30 @@
 package com.dpenny.mcda5510.connect;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class MySQLJDBCConnection implements DBConnection{
 
-	public Connection setupConnection()  {
+public class MySQLJDBCConnection{
 
-		Connection connection = null;
-		try {
-			// This will load the MySQL driver, each DB has its own driver
-			// Class.forName("com.mysql.jdbc.Driver");
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			// Setup the connection with the DB
+private static final String USERNAME = "m_rankireddi";
+private static final String PASSWORD = "A00432392";
+private static final String CONN_STRING ="jdbc:mysql://dev.cs.smu.ca/m_rankireddi?autoReconnect=true&useSSL=false";
+	
+	public static void main(String[] args) {
+		
+		try 
+		{
+			Connection conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/transactoins?" 				+ "user=root&password=db123456" // Creds
-					+ "&useSSL=false" // b/c localhost
-					+ "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"); // timezone
-
-		} catch (Exception e) {
-			System.out.println("Error setting up connectino");
+			System.out.println("Connected !");
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-
+		} 
+		
+		
 		}
-		return connection;
-	}		
-	
-	
-}
+		
+	}

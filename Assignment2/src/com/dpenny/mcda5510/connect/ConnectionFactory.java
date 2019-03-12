@@ -11,7 +11,7 @@ public class ConnectionFactory {
 		}
 		if (connectionType.equalsIgnoreCase("mySQLJDBC")) {
 			MySQLJDBCConnection dbConnection = new MySQLJDBCConnection();
-			return dbConnection.setupConnection();
+			//return dbConnection.setupConnection();
 
 		} else if (connectionType.equalsIgnoreCase("Mock")) {
 			return new MockConnection();
