@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="CleanDialogSettings">
 		<item value="662" key="DIALOG_WIDTH"/>
-		<item value="true" key="TOGGLE_SELECTED"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
 		<item value="452" key="DIALOG_HEIGHT"/>
 		<item value="629" key="DIALOG_X_ORIGIN"/>
 		<item value="214" key="DIALOG_Y_ORIGIN"/>
@@ -12,6 +12,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Meghashyam\Documents\GitHub\A00432392_MCDA5510\Assignment2"/>
 			<item value="C:\Users\Meghashyam\Documents\GitHub\A00432392_MCDA5510"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
