@@ -21,7 +21,8 @@ import com.mcda5510.entity.Transaction;
 public class Assignment2 {
 
 	public static Connection single_instance;
-	public static Logger logger;
+	public static Logger error_logger;
+	public static Logger output_logger;
 
 
 	public static Connection getInstance() {
@@ -34,42 +35,76 @@ public class Assignment2 {
 	}
 
 	public static void logInit() {
-		Handler consoleHandler = null;
+		Handler error_consoleHandler = null;
+		Handler output_consoleHandler = null;
 
-		Handler fileHandler = null;
+		Handler error_fileHandler = null;
+		Handler output_fileHandler = null;
 		Formatter simpleFormatter = null;
 		
+		 output_logger = Logger.getLogger(Assignment2.class.getName());
+		 error_logger = Logger.getLogger(Assignment2.class.getName());
 		
-		 logger = Logger.getLogger(Assignment2.class.getName());
-		
-		consoleHandler = new ConsoleHandler();
+		error_consoleHandler = new ConsoleHandler();
 		try {
-			fileHandler = new FileHandler("C:\\Users\\Meghashyam\\Documents\\GitHub\\A00432392_MCDA5510\\Assignment2\\Output\\result.log");
+			output_fileHandler = new FileHandler("C:\\Users\\Meghashyam\\Documents\\GitHub\\A00432392_MCDA5510\\Assignment2\\Output\\output.log", true);
+			error_fileHandler = new FileHandler("C:\\Users\\Meghashyam\\Documents\\GitHub\\A00432392_MCDA5510\\Assignment2\\Output\\error.log", true);
 		} catch (SecurityException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
-		logger.addHandler(consoleHandler);
-		logger.addHandler(fileHandler);
 		
-		logger.setLevel(Level.ALL);
+		//output_logger.addHandler(output_consoleHandler);
+		output_logger.addHandler(output_fileHandler);
+		
+		error_logger.addHandler(error_consoleHandler);
+		error_logger.addHandler(error_fileHandler);
+		
+		error_logger.setLevel(Level.ALL);
+		output_logger.setLevel(Level.ALL);
+		
 		simpleFormatter = new SimpleFormatter();
 		
 		// Setting formatter to the handler
-		fileHandler.setFormatter(simpleFormatter);
+		error_fileHandler.setFormatter(simpleFormatter);
+		output_fileHandler.setFormatter(simpleFormatter);
 
 		
 	}
 	
+public static void create_transaction(Boolean a, Transaction transaction)
+{    if(a) {
+	 String msg= "Transaction is success, ID is "+transaction.getID();
+	 output_logger.info(msg);
+	 System.out.println(msg);
+			}
+}
+
+public static void update_transaction(Boolean a, Transaction transaction)
+{    if(a) {
+	 String msg= "Transaction " +transaction.getID()+" is successfully updated";
+	 output_logger.info(msg);
+	 System.out.println(msg);
+			}
+}
+
+public static void delete_transaction(Boolean a, Transaction transaction)
+{    if(a) {
+	 String msg= "Transaction " +transaction.getID()+" is successfully deleted";
+	 output_logger.info(msg);
+	 System.out.println(msg);
+			}
+}
+
 
 	public static void main(String[] args) {
 		MySQLAccess dao = new MySQLAccess();
 		
+	//Static assignment of variables	
+		int ID=500;
+		String nameOnCard="MeghashyamR";
 		
-		int ID=32;
-		String nameOnCard="Meghashyam";
-		
-		String cardNumber="5112345678901000";
+		String cardNumber="5112987654334569";
 		
 		float unitPrice=20;
 		
@@ -79,7 +114,7 @@ public class Assignment2 {
 		
 		totalPrice=unitPrice*(float)quantity;
 		
-		String expDate="12/2019";
+		String expDate="12/2018";
 		
 		java.sql.Date createdOn = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		
@@ -107,20 +142,27 @@ public class Assignment2 {
 			boolean flag= dao.validate(connection, trxn);
 			
 			if(flag) {
-						
-			 boolean Create_flag = dao.createTransaction(connection, trxn);   // Create Transaction (Insert)
+			
+			
+           //Create Transaction (Insert)
+			 boolean Create_flag = dao.createTransaction(connection, trxn);  
+			 create_transaction(Create_flag, trxn);
 			 
-			 if(Create_flag) {
-				 String msg= "Transaction is success, ID is ";
-				 String Id= String.valueOf(trxn.getID());
-				 logger.info(msg+Id);
-				 System.out.println(msg+Id);
-			 }
-			//dao.updateTransaction(connection, trxn); // Update transaction
-			//dao.deleteTransaction(connection, trxn);  // Delete transaction (Delete)
+			  
 			 
+	//Update Transaction - Uncomment below  to execute 
+			 //boolean Update_flag= dao.updateTransaction(connection, trxn); 
+			 //update_transaction(Update_flag, trxn);
+			 
+			  
+	// Delete transaction (Delete) - Uncomment below to execute
+			 boolean Delete_flag = dao.deleteTransaction(connection, trxn);  
+			 delete_transaction(Delete_flag, trxn);
+				
+				
 						
 			}
+			
 			else {
 				System.out.println("Validation failed");
 				
@@ -133,8 +175,10 @@ public class Assignment2 {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.severe(e.getMessage());
+			error_logger.severe(e.getMessage());
 		}
 	}
+
+	
 
 }

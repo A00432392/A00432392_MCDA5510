@@ -17,8 +17,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.*;
 
 import com.mcda5510.entity.Transaction;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
 
 public class MySQLAccess {
 
@@ -98,7 +100,7 @@ public class MySQLAccess {
 		// DO the update SQL here
 		Statement statement = null;
 		boolean flag= false;
-		
+		try {
 		
 			//statement = connection.createStatement();
 		    String query = "INSERT INTO TRANSACTION(ID, NameOnCard, CARDNUMBER, UNITPRICE, QUANTITY, TOTALPRICE, EXPDATE, CREATEDON, CREATEDBY)"
@@ -133,7 +135,10 @@ public class MySQLAccess {
 					      else {
 					    	  System.out.println("Unsuccessful insert !");
 					      }
-			
+		}
+		catch(Exception e ) {
+			e.printStackTrace();
+		}
 		
 		
 		return flag;
@@ -145,6 +150,8 @@ public class MySQLAccess {
 		// DO the delete SQL here
 		Statement statement = null;
 		boolean flag= false;
+		
+		try {
 		System.out.println("Please input the ID #");
 		Scanner in = new Scanner(System.in);
 		  
@@ -175,20 +182,44 @@ public class MySQLAccess {
 					      else {
 					    	  System.out.println("Unsuccessful delete !");
 					      }
-			
 		
-		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		return flag;
-
 		
 	}
 	
-	public boolean validate(Connection connection, Transaction trxn) throws SQLException
+	public boolean validate(Connection connection, Transaction trxn) throws SQLException,Exception
 	{ 
 		boolean flag1=false;
 		boolean flag2=false;
 		boolean flag3=false;
 		boolean flag=false;
+		boolean flag5= true;
+		boolean flag6= true;
+		String regex = "[\\;\\:\\!\\@\\#\\$\\%\\^\\*\\+\\?\\<\\>]+";
+		java.util.regex.Pattern pat = java.util.regex.Pattern.compile(regex);
+		Matcher nameOnCard_Match = pat.matcher(trxn.getNameOnCard());
+        Matcher cardNumber_Match = pat.matcher(trxn.getCardNumber().toString());
+        
+        
+        if (nameOnCard_Match.find()) {
+               flag5=false;
+               System.out.println("Please check your name on the card again.");
+               throw new Exception("Invalid name given, Please remove special characters.");
+        }
+        if (cardNumber_Match.find() || !(trxn.getCardNumber().toString().matches("[0-9]+")) ) {
+               flag6 = false;
+               System.out.println("Please check your cardnumber again.");
+               throw new Exception("Invalid cardnumber. Card number has characters other than numbers.");
+        }
+        
+        
+
+		
 		String year[] = new String[10]; 
 		ResultSet result=null;
 		String cardname=null;
@@ -236,15 +267,17 @@ public class MySQLAccess {
 					 
 			if(count==0) {
 				
-				System.out.println("Please enter a valid card number");
+				String errormsg = "Please enter a valid credit card number.";
 				flag1 = false;
+				throw  new Exception(errormsg);
 				
 			}	else flag1=true;
 			
 			if(count==1 && trxn.getCardNumber().length()!=validlength) {
 				
-				System.out.println("Please check the length card number proplerly.");
+				String errormsg ="Please check the length of the card number proplerly.";
 				flag2 = false;
+				throw new Exception(errormsg);
 				
 			}
 			else flag2 =true;
@@ -259,7 +292,7 @@ public class MySQLAccess {
 			}
 				
 				
-			if(flag1 && flag2 && flag3 ) {
+			if(flag1 && flag2 && flag3 && flag5 && flag6 ) {
 				flag = true;
 			}
 			
@@ -270,8 +303,10 @@ public class MySQLAccess {
 		}
 		
 		
+		
 		return flag;
 	}
+	
 	
 	private ResultSet retrieve(Connection connection)
 	{
