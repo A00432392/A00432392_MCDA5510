@@ -1,0 +1,53 @@
+
+--
+-- Table structure for table `TRANSACTION`
+--
+
+CREATE TABLE `TRANSACTION` (
+  `ID` int(11) NOT NULL,
+  `NAMEONCARD` varchar(256) NOT NULL,
+  `CARDNUMBER` varchar(45) NOT NULL,
+  `UNITPRICE` decimal(10,0) NOT NULL,
+  `QUANTITY` int(11) NOT NULL,
+  `TOTALPRICE` decimal(10,0) NOT NULL,
+  `EXPDATE` varchar(16) NOT NULL,
+  `CREATEDON` datetime NOT NULL,
+  `CREATEDBY` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `TRANSACTION`
+--
+
+INSERT INTO `TRANSACTION` (`ID`, `NAMEONCARD`, `CARDNUMBER`, `UNITPRICE`, `QUANTITY`, `TOTALPRICE`, `EXPDATE`, `CREATEDON`, `CREATEDBY`) VALUES
+(0, 'Meghashyam', '12345', '20', 20, '0', '122018', '2019-03-05 00:00:00', 'Meghashyam'),
+(2, 'Shyam', '12345', '20', 20, '0', '122018', '2019-03-05 00:00:00', 'Shyam'),
+(3, 'Shyam', '9124356', '20', 20, '0', '122018', '2019-03-05 00:00:00', 'Shyam'),
+(4, 'Shyam', '9124356', '20', 20, '0', '122018', '2019-03-05 00:00:00', 'Shyam'),
+(5, 'Shyam', '12345', '20', 20, '0', '122018', '2019-03-05 00:00:00', 'Shyam'),
+(10, 'Meghashyam', '12345', '20', 20, '0', '122019', '2019-03-05 00:00:00', 'Meghashyam'),
+(15, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-05 00:00:00', 'Meghashyam'),
+(18, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-06 00:00:00', 'Meghashyam'),
+(25, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(26, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(27, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(28, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(29, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(30, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(31, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(32, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam'),
+(260, 'Meghashyam', '5112345678901000', '20', 20, '0', '12/2019', '2019-03-11 00:00:00', 'Meghashyam');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `TRANSACTION`
+--
+ALTER TABLE `TRANSACTION`
+  ADD PRIMARY KEY (`ID`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
