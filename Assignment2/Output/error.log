@@ -1,0 +1,12 @@
+Mar 13, 2019 4:29:01 PM com.mcda5510.Assignment2 create_transaction
+INFO: Transaction is success, ID is 1124
+Mar 13, 2019 4:29:33 PM com.mcda5510.Assignment2 update_transaction
+INFO: Transaction1124 is successfully updated1124
+Mar 13, 2019 4:30:17 PM com.mcda5510.Assignment2 delete_transaction
+INFO: Transaction1124 is successfully deleted1124
+Mar 13, 2019 4:36:05 PM com.mcda5510.Assignment2 create_transaction
+INFO: Transaction is success, ID is 500
+Mar 13, 2019 4:36:10 PM com.mcda5510.Assignment2 delete_transaction
+INFO: Transaction 500 is successfully deleted
+Mar 13, 2019 4:36:25 PM com.mcda5510.Assignment2 main
+SEVERE: Invalid cardnumber
