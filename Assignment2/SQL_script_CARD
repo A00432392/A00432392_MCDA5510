@@ -1,0 +1,33 @@
+
+-- Database: `m_rankireddi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CARD`
+--
+
+CREATE TABLE `CARD` (
+  `CREDITCARD` varchar(30) DEFAULT NULL,
+  `PREFIX` int(10) DEFAULT NULL,
+  `LENGTH` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `CARD`
+--
+
+INSERT INTO `CARD` (`CREDITCARD`, `PREFIX`, `LENGTH`) VALUES
+('AmericanExpress', 34, 15),
+('AmericanExpress', 34, 15),
+('MasterCard', 51, 16),
+('MasterCard', 52, 16),
+('MasterCard', 53, 16),
+('MasterCard', 54, 16),
+('MasterCard', 55, 16),
+('Visa', 4, 16);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
