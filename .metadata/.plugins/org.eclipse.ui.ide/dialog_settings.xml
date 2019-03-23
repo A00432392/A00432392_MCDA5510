@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\Meghashyam\Desktop\Part 1 - Assignment 3 files"/>
+		<item value="C:\Users\Meghashyam\Desktop\Part 1 - Assignment 3"/>
+	</list>
 	<section name="CleanDialogSettings">
 		<item value="662" key="DIALOG_WIDTH"/>
 		<item value="false" key="TOGGLE_SELECTED"/>
@@ -20,9 +24,10 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.m2e.core.wizards.Maven2ProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.python.pydev.ui.wizards.project.PythonProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.m2e"/>
+			<item value="org.python.pydev.PythonCategory"/>
 		</list>
 	</section>
 	<section name="SaveAsDialogSettings">
